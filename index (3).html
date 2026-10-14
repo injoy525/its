@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A student-friendly newsroom briefing on the 2026 semiconductor industry outlook, AI chips, memory, HBM, and South Korea.">
+  <title>Semiconductors in 2026 | Student Newsroom</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5d687d;
+      --paper: #f5f7fb;
+      --card: #ffffff;
+      --line: #dce3ee;
+      --blue: #244bd7;
+      --blue-dark: #1838a7;
+      --pale-blue: #edf2ff;
+      --green: #14784c;
+      --pale-green: #e9f8f0;
+      --amber: #8b5a00;
+      --pale-amber: #fff4d9;
+      --shadow: 0 12px 32px rgba(25, 42, 78, .07);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: var(--blue); text-underline-offset: 3px; overflow-wrap: anywhere; }
+    a:hover { color: var(--blue-dark); }
+    .topbar {
+      background: #111b35;
+      color: #fff;
+      padding: 10px 18px;
+      font-size: .85rem;
+      letter-spacing: .04em;
+    }
+    .topbar-inner, main, footer { width: min(1080px, calc(100% - 32px)); margin: 0 auto; }
+    .hero {
+      background: radial-gradient(circle at 85% 10%, rgba(103, 139, 255, .38), transparent 32%),
+                  linear-gradient(135deg, #111b35, #1c367a 65%, #315ce0);
+      color: #fff;
+      padding: 54px 0 46px;
+    }
+    .hero-inner { width: min(1080px, calc(100% - 32px)); margin: 0 auto; }
+    .eyebrow {
+      display: inline-block;
+      padding: 5px 11px;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 750;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 850px;
+      margin: 18px 0 12px;
+      font-size: clamp(2.15rem, 7vw, 4.5rem);
+      line-height: 1.04;
+      letter-spacing: -.045em;
+    }
+    .hero p { max-width: 760px; margin: 0; color: #e4eaff; font-size: clamp(1rem, 2.5vw, 1.2rem); }
+    .meta { display: flex; flex-wrap: wrap; gap: 9px 22px; margin-top: 25px; color: #d9e2ff; font-size: .92rem; }
+    main { padding: 28px 0 56px; }
+    .notice {
+      border-left: 4px solid var(--blue);
+      background: var(--pale-blue);
+      border-radius: 0 12px 12px 0;
+      padding: 15px 17px;
+      margin: 0 0 28px;
+      color: #24365f;
+    }
+    section { margin-top: 34px; }
+    .section-heading { margin-bottom: 16px; }
+    h2 { font-size: clamp(1.45rem, 4vw, 2rem); line-height: 1.2; letter-spacing: -.025em; margin: 0 0 7px; }
+    .section-heading p { margin: 0; color: var(--muted); }
+    .facts-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
+    .fact, .panel, .term-panel, .source-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .fact { padding: 20px; }
+    .fact-number {
+      display: inline-grid; place-items: center;
+      width: 34px; height: 34px; border-radius: 11px;
+      background: var(--pale-blue); color: var(--blue);
+      font-weight: 850; margin-bottom: 11px;
+    }
+    .fact h3 { margin: 0 0 9px; font-size: 1.08rem; line-height: 1.35; }
+    .fact p { margin: 0 0 12px; }
+    .translation { border-top: 1px solid var(--line); padding-top: 10px; margin-top: 12px !important; color: #46536b; font-size: .95rem; }
+    .tag {
+      display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: .035em;
+      text-transform: uppercase; padding: 4px 8px; border-radius: 999px; margin-bottom: 10px;
+    }
+    .tag.forecast { color: #2445a4; background: #e8edff; }
+    .tag.reported { color: var(--green); background: var(--pale-green); }
+    .tag.expectation { color: var(--amber); background: var(--pale-amber); }
+    .source-line { color: var(--muted); font-size: .86rem; margin: 10px 0 0; }
+    .panel { padding: 22px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      min-height: 48px; padding: 12px 17px; border: 0; border-radius: 12px;
+      background: var(--blue); color: #fff; font: inherit; font-weight: 750; cursor: pointer;
+      box-shadow: 0 5px 14px rgba(36,75,215,.2);
+    }
+    .button:hover { background: var(--blue-dark); }
+    .button:focus-visible, a:focus-visible { outline: 3px solid #ffbf47; outline-offset: 3px; }
+    .button .chevron { transition: transform .2s ease; }
+    .button[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+    #termDefinitions { margin-top: 16px; }
+    #termDefinitions[hidden] { display: none; }
+    .terms-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .term { padding: 16px; background: #f8faff; border: 1px solid var(--line); border-radius: 13px; }
+    .term h3 { margin: 0 0 7px; font-size: 1rem; }
+    .term p { margin: 0; }
+    .term .ko { color: var(--muted); margin-top: 8px; font-size: .94rem; }
+    .outlook-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 15px; }
+    .panel h3 { margin: 0 0 10px; }
+    .panel ul { padding-left: 21px; margin: 8px 0 0; }
+    .panel li + li { margin-top: 8px; }
+    .big-number { font-size: clamp(2rem, 5vw, 3.3rem); font-weight: 850; line-height: 1.1; letter-spacing: -.04em; color: var(--blue); }
+    .source-list { display: grid; gap: 12px; }
+    .source-card { padding: 16px 18px; }
+    .source-card h3 { font-size: 1rem; margin: 0 0 5px; }
+    .source-card p { margin: 0 0 7px; color: var(--muted); font-size: .92rem; }
+    .source-card a { font-weight: 700; }
+    .method-note { font-size: .9rem; color: var(--muted); }
+    footer { border-top: 1px solid var(--line); padding: 22px 0 34px; color: var(--muted); font-size: .88rem; }
+    @media (max-width: 700px) {
+      .hero { padding: 40px 0 34px; }
+      .facts-grid, .terms-grid, .outlook-grid { grid-template-columns: 1fr; }
+      .fact, .panel { padding: 18px; }
+      main { padding-top: 20px; }
+      .topbar-inner, main, footer, .hero-inner { width: min(100% - 24px, 1080px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="topbar-inner">STUDENT NEWSROOM <span aria-hidden="true">/</span> TECHNOLOGY & BUSINESS</div></div>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">2026 Industry Briefing</span>
+      <h1>Semiconductors in 2026: The AI Chip Boom</h1>
+      <p>Why AI is changing the chip industry, what it means for South Korea, and what may happen next.</p>
+      <div class="meta">
+        <span><strong>Creator:</strong> Rahul Rauniyar</span>
+        <span><strong>Material verified:</strong> October 14, 2026</span>
+        <span><strong>Reading time:</strong> 5 minutes</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="notice">
+      <strong>How to read this briefing:</strong> Reported data describes something that has already happened. A forecast or industry expectation describes what may happen in the future. Forecasts can change.
+    </div>
+
+    <section aria-labelledby="overview-title">
+      <div class="section-heading">
+        <h2 id="overview-title">The big picture</h2>
+        <p>AI systems need both powerful processors and fast memory. This is driving much of the expected market growth.</p>
+      </div>
+      <div class="panel">
+        <div class="big-number">US$1.51 trillion</div>
+        <p><strong>WSTS forecast for the global semiconductor market in 2026.</strong> The forecast represents 90% growth compared with 2025. It is not the final, confirmed total for the full year.</p>
+        <p class="translation"><strong>한국어:</strong> WSTS는 2026년 세계 반도체 시장 규모를 1조 5,100억 달러로 전망합니다. 이는 2025년보다 90% 성장한 수치입니다. 연간 최종 실적이 아니라 전망치입니다.</p>
+        <p class="source-line">Source: <a href="https://www.wsts.org/esraCMS/extension/esrapdf/generate/13677" target="_blank" rel="noopener noreferrer">WSTS Spring 2026 Forecast</a> — published May 2026.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="facts-title">
+      <div class="section-heading">
+        <h2 id="facts-title">Five key facts</h2>
+        <p>Each fact is labeled so you can tell reported performance from a future projection.</p>
+      </div>
+      <div class="facts-grid">
+        <article class="fact">
+          <div class="fact-number">1</div>
+          <span class="tag forecast">Future projection</span>
+          <h3>The global market is expected to grow sharply.</h3>
+          <p>WSTS forecasts that the semiconductor market will reach US$1.51 trillion in 2026, up 90% from 2025.</p>
+          <p class="translation"><strong>한국어:</strong> WSTS는 2026년 세계 반도체 시장이 1조 5,100억 달러에 도달하고, 2025년보다 90% 성장할 것으로 전망합니다.</p>
+          <p class="source-line"><a href="https://www.wsts.org/esraCMS/extension/esrapdf/generate/13677" target="_blank" rel="noopener noreferrer">WSTS Spring 2026 Forecast</a> · May 2026</p>
+        </article>
+
+        <article class="fact">
+          <div class="fact-number">2</div>
+          <span class="tag forecast">Future projection</span>
+          <h3>Memory chips could see exceptional growth.</h3>
+          <p>WSTS forecasts memory market growth of about 250% in 2026, with the market exceeding US$800 billion.</p>
+          <p class="translation"><strong>한국어:</strong> WSTS는 2026년 메모리 반도체 시장이 약 250% 성장하고, 시장 규모가 8,000억 달러를 넘어설 것으로 전망합니다.</p>
+          <p class="source-line"><a href="https://www.wsts.org/esraCMS/extension/esrapdf/generate/13677" target="_blank" rel="noopener noreferrer">WSTS Spring 2026 Forecast</a> · May 2026</p>
+        </article>
+
+        <article class="fact">
+          <div class="fact-number">3</div>
+          <span class="tag forecast">Future projection</span>
+          <h3>Logic chips are expected to grow, too.</h3>
+          <p>WSTS forecasts 37% growth in logic semiconductors in 2026, supported by AI and cloud infrastructure demand.</p>
+          <p class="translation"><strong>한국어:</strong> WSTS는 AI와 클라우드 인프라 수요에 힘입어 2026년 로직 반도체 시장이 37% 성장할 것으로 전망합니다.</p>
+          <p class="source-line"><a href="https://www.wsts.org/esraCMS/extension/esrapdf/generate/13677" target="_blank" rel="noopener noreferrer">WSTS Spring 2026 Forecast</a> · May 2026</p>
+        </article>
+
+        <article class="fact">
+          <div class="fact-number">4</div>
+          <span class="tag reported">Reported performance</span>
+          <h3>South Korean memory shipments rose in July.</h3>
+          <p>Reported July 2026 data showed memory chip shipments up 276.9% year over year. System semiconductor exports fell 0.7%.</p>
+          <p class="translation"><strong>한국어:</strong> 2026년 7월 한국의 메모리 반도체 출하량은 전년 동월 대비 276.9% 증가했습니다. 시스템 반도체 수출은 0.7% 감소했습니다.</p>
+          <p class="source-line"><a href="https://www.techtimes.com/articles/324570/20260815/south-korea-chip-data-memory-277-logic-down-ai-buys-bandwidth-not-compute.htm" target="_blank" rel="noopener noreferrer">TechTimes report on Korean trade data</a> · August 15, 2026</p>
+        </article>
+
+        <article class="fact">
+          <div class="fact-number">5</div>
+          <span class="tag expectation">Industry expectation</span>
+          <h3>Memory supply could remain tight into 2027.</h3>
+          <p>South Korean manufacturers are prioritizing HBM and server memory. This may limit the supply of conventional memory used in phones and computers.</p>
+          <p class="translation"><strong>한국어:</strong> 한국 제조업체들은 HBM과 서버용 메모리를 우선 생산하고 있습니다. 이로 인해 스마트폰과 컴퓨터에 사용되는 일반 메모리의 공급이 제한될 수 있습니다.</p>
+          <p class="source-line"><a href="https://fsm.global/sg/article/rcms352420/south-korea-outlook-2026-extending-the-memory-supercycle" target="_blank" rel="noopener noreferrer">FSM Global, South Korea Outlook 2026</a> · September 28, 2026</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="terms-title">
+      <div class="section-heading">
+        <h2 id="terms-title">Four terms to know</h2>
+        <p>Use the button to show or hide the definitions.</p>
+      </div>
+      <button class="button" id="termsButton" type="button" aria-expanded="false" aria-controls="termDefinitions">
+        <span id="buttonLabel">View Term Definitions</span>
+        <span class="chevron" aria-hidden="true">⌄</span>
+      </button>
+      <div id="termDefinitions" hidden>
+        <div class="terms-grid">
+          <article class="term">
+            <h3>1. Semiconductor — 반도체</h3>
+            <p>A material used to control electrical signals. Semiconductors are essential parts of phones, cars, computers, and many other devices.</p>
+            <p class="ko"><strong>한국어:</strong> 전기 신호를 제어하는 데 사용되는 물질입니다. 스마트폰, 자동차, 컴퓨터 등 다양한 기기의 핵심 부품입니다.</p>
+          </article>
+          <article class="term">
+            <h3>2. AI semiconductor — AI 반도체</h3>
+            <p>A chip designed to perform calculations for artificial intelligence. It helps AI systems train and respond to requests.</p>
+            <p class="ko"><strong>한국어:</strong> 인공지능에 필요한 계산을 수행하는 반도체입니다. AI 시스템의 학습과 응답을 돕습니다.</p>
+          </article>
+          <article class="term">
+            <h3>3. Memory semiconductor — 메모리 반도체</h3>
+            <p>A chip that stores data. DRAM and NAND are common types used in computers, phones, and data centers.</p>
+            <p class="ko"><strong>한국어:</strong> 데이터를 저장하는 반도체입니다. DRAM과 NAND가 대표적이며 컴퓨터, 스마트폰, 데이터센터 등에 사용됩니다.</p>
+          </article>
+          <article class="term">
+            <h3>4. HBM — 고대역폭 메모리</h3>
+            <p>High Bandwidth Memory is a fast memory technology that stacks memory chips and moves large amounts of data quickly. It is important for advanced AI systems.</p>
+            <p class="ko"><strong>한국어:</strong> HBM은 여러 메모리 칩을 쌓아 대량의 데이터를 빠르게 전달하는 고속 메모리 기술입니다. 첨단 AI 시스템에 중요합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="outlook-title">
+      <div class="section-heading">
+        <h2 id="outlook-title">Industry outlook: What could happen next?</h2>
+        <p>Strong opportunities exist, but growth is not guaranteed.</p>
+      </div>
+      <div class="outlook-grid">
+        <article class="panel">
+          <h3>Growth factors</h3>
+          <ul>
+            <li><strong>AI investment:</strong> More AI data centers may increase demand for processors and high-speed memory.</li>
+            <li><strong>HBM demand:</strong> AI systems need memory that can move data quickly.</li>
+            <li><strong>South Korea:</strong> Korean memory makers may benefit from demand for HBM and server memory.</li>
+          </ul>
+          <p class="translation"><strong>한국어:</strong> AI 데이터센터 투자, HBM 수요, 서버용 메모리 수요가 성장을 이끌 수 있습니다. 한국의 메모리 반도체 기업들은 이러한 수요 증가의 혜택을 받을 가능성이 있습니다.</p>
+        </article>
+        <article class="panel">
+          <h3>Uncertainties and risks</h3>
+          <ul>
+            <li>AI companies may change or reduce their investment plans.</li>
+            <li>Limited memory supply could raise costs for phone and computer makers.</li>
+            <li>Production capacity and global economic conditions may change the market outlook.</li>
+          </ul>
+          <p class="translation"><strong>한국어:</strong> AI 기업의 투자 계획 변화, 메모리 공급 부족에 따른 비용 상승, 생산 능력과 세계 경제 상황이 시장 전망에 영향을 줄 수 있습니다.</p>
+        </article>
+      </div>
+      <div class="panel" style="margin-top:15px">
+        <span class="tag forecast">2027 forecast — not confirmed results</span>
+        <h3>WSTS expects further market growth.</h3>
+        <p>WSTS forecasts about 27% growth in 2027, taking the global semiconductor market to roughly <strong>US$1.9 trillion</strong>. This is a projection and may change as new data becomes available.</p>
+        <p class="translation"><strong>한국어:</strong> WSTS는 2027년 세계 반도체 시장이 약 27% 성장해 1조 9,000억 달러 규모에 이를 것으로 전망합니다. 이는 전망치이며 새로운 데이터에 따라 달라질 수 있습니다.</p>
+        <p class="source-line">Source: <a href="https://www.wsts.org/61/Forecasts" target="_blank" rel="noopener noreferrer">WSTS Forecasts</a> and <a href="https://www.wsts.org/esraCMS/extension/esrapdf/generate/13677" target="_blank" rel="noopener noreferrer">Spring 2026 Forecast</a>.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="sources-title">
+      <div class="section-heading">
+        <h2 id="sources-title">Sources and verification</h2>
+        <p>Open the original reports and articles for more detail.</p>
+      </div>
+      <div class="source-list">
+        <article class="source-card">
+          <h3>1. WSTS — Spring 2026 Forecast</h3>
+          <p>Global market forecast and product-category growth estimates.</p>
+          <p><strong>Publication:</strong> May 2026</p>
+          <a href="https://www.wsts.org/esraCMS/extension/esrapdf/generate/13677" target="_blank" rel="noopener noreferrer">Read the WSTS forecast ↗</a>
+        </article>
+        <article class="source-card">
+          <h3>2. WSTS — Forecasts page</h3>
+          <p>Official forecast page, including the schedule for future forecast updates.</p>
+          <p><strong>Page:</strong> Forecast information; check the page for updates.</p>
+          <a href="https://www.wsts.org/61/Forecasts" target="_blank" rel="noopener noreferrer">View WSTS forecasts ↗</a>
+        </article>
+        <article class="source-card">
+          <h3>3. FSM Global — South Korea Outlook 2026: Extending the Memory Supercycle</h3>
+          <p>Industry expectations for Korean memory, HBM, supply, and prices.</p>
+          <p><strong>Publication:</strong> September 28, 2026</p>
+          <a href="https://fsm.global/sg/article/rcms352420/south-korea-outlook-2026-extending-the-memory-supercycle" target="_blank" rel="noopener noreferrer">Read the FSM Global outlook ↗</a>
+        </article>
+        <article class="source-card">
+          <h3>4. TechTimes — South Korean chip trade data</h3>
+          <p>Report on July 2026 memory shipment and system semiconductor export figures.</p>
+          <p><strong>Publication:</strong> August 15, 2026</p>
+          <a href="https://www.techtimes.com/articles/324570/20260815/south-korea-chip-data-memory-277-logic-down-ai-buys-bandwidth-not-compute.htm" target="_blank" rel="noopener noreferrer">Read the TechTimes report ↗</a>
+        </article>
+        <article class="source-card">
+          <h3>5. Infosys Knowledge Institute — Semiconductor Industry Outlook 2026</h3>
+          <p>Background on AI infrastructure and semiconductor industry scenarios.</p>
+          <p><strong>Publication:</strong> 2026 report; see the document for its publication details.</p>
+          <a href="https://www.infosys.com/iki/documents/semiconductor-industry-outlook2026.pdf" target="_blank" rel="noopener noreferrer">Read the Infosys report (PDF) ↗</a>
+        </article>
+      </div>
+      <p class="method-note">Verification note: The figures on this page reflect the research notes checked on October 14, 2026. Market forecasts are not actual full-year results. The July shipment figure is reported historical data; the 2026 and 2027 market figures are forecasts.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Semiconductors in 2026: The AI Chip Boom</strong> · Student newsroom project by Rahul Rauniyar.</p>
+    <p>Educational content only. Forecasts are estimates and may change when sources publish updated data.</p>
+  </footer>
+
+  <script>
+    (function () {
+      const button = document.getElementById('termsButton');
+      const panel = document.getElementById('termDefinitions');
+      const label = document.getElementById('buttonLabel');
+
+      button.addEventListener('click', function () {
+        const willOpen = button.getAttribute('aria-expanded') !== 'true';
+        button.setAttribute('aria-expanded', String(willOpen));
+        panel.hidden = !willOpen;
+        label.textContent = willOpen ? 'Hide Term Definitions' : 'View Term Definitions';
+      });
+    }());
+  </script>
+</body>
+</html>
